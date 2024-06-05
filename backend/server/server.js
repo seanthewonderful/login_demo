@@ -21,6 +21,7 @@ import { handlerFunctions } from "./controller.js";
 app.get("/api/session-check", handlerFunctions.sessionCheck);
 app.post("/api/login", handlerFunctions.login);
 app.get("/api/logout", handlerFunctions.logout);
+app.post("/api/register", handlerFunctions.register);
 
 ViteExpress.listen(app, 9999, () =>
   console.log(`Listening at http://localhost:9999`)

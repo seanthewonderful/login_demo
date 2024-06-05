@@ -2,7 +2,7 @@ import { db, User } from './model.js'
 
 await db.sync({ force: true })
 
-let users = ["Cat", "Ty", "Lincoln", "Jesse", "Josh", "Jackson", "Michael", "David"]
+let users = ["Pacha", "Kuzco", "Kronk", "Yzma", "Squirrel"]
 
 for (const user of users) {
   await User.create({

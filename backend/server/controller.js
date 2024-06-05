@@ -23,6 +23,31 @@ export const handlerFunctions = {
     }
   },
 
+  register: async (req, res) => {
+    const { username, password } = req.body
+
+    if (await User.findOne({ where: { username: username } })) {
+      res.send({
+        message: 'username already exists',
+        success: false
+      })
+      return
+    }
+
+    const user = await User.create({
+      username: username,
+      password: password
+    })
+
+    req.session.userId = user.userId
+
+    res.send({
+      message: 'user created',
+      success: true,
+      userId: user.userId
+    })
+  },
+
   login: async (req, res) => {
     // grab values of 'username'/'password' from body object
     const { username, password } = req.body

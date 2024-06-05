@@ -28,48 +28,6 @@ User.init(
     },
   },
   {
-    // hooks: {
-    //   beforeCreate: (user, options) => {
-    //     const hashedPassword = bcryptjs.hashSync(
-    //       user.password,
-    //       bcryptjs.genSaltSync(5)
-    //     );
-    //     user.password = hashedPassword;
-    //     user.firstName = user.firstName.toLowerCase();
-    //     user.lastName = user.lastName.toLowerCase();
-    //   },
-    //   beforeBulkCreate: (users, options) => {
-    //     for (let user of users) {
-    //       const hashedPassword = bcryptjs.hashSync(
-    //         user.password,
-    //         bcryptjs.genSaltSync(5)
-    //       );
-    //       user.password = hashedPassword;
-    //       user.firstName = user.firstName.toLowerCase();
-    //       user.lastName = user.lastName.toLowerCase();
-    //     }
-    //   },
-    //   beforeUpdate: (user, options) => {
-    //     // if (user.password) {
-    //     //     const hashedPassword = bcryptjs.hashSync(user.password, bcryptjs.genSaltSync(5))
-    //     //     user.password = hashedPassword
-    //     // }
-    //     user.firstName = user.firstName.toLowerCase();
-    //     user.lastName = user.lastName.toLowerCase();
-    //   },
-    // },
-    // defaultScope: {
-    //   attributes: {
-    //     exclude: ["password"],
-    //   },
-    // },
-    // scopes: {
-    //   withPassword: {
-    //     attributes: {
-    //       include: ["password"],
-    //     },
-    //   },
-    // },
     modelName: "user",
     sequelize: db,
   }

@@ -2,12 +2,15 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 
+import Register from './Register'
+
 function App() {
   // To login, I need a user to enter their username + password
   // I should keep track of these with state values, and then when the form is submitted, 
   // send those state values to my server as a req.body
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [showRegister, setShowRegister] = useState(false)
 
   // const [userId, setUserId] = useState(null)
 
@@ -81,17 +84,20 @@ function App() {
   }, [])
 
 
-  return (
+  return showRegister ? (
+    <Register setShowRegister={setShowRegister} />
+  ) : (
     <>
       <nav>
         <h1>Home</h1>
-        <button>Go somewhere</button>
-        <button>Go elsewhere</button>
         {userId &&
           <button onClick={handleLogout}>Logout</button>
         }
         {!userId &&
+        <>
           <button>Login</button>
+          <button onClick={() => setShowRegister(true)}>Register</button>
+        </>
         }
       </nav>
       {!userId &&
