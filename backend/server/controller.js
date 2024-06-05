@@ -1,4 +1,5 @@
 import { User } from '../database/model.js'
+import bcryptjs from 'bcryptjs'
 
 export const handlerFunctions = {
   sessionCheck: async (req, res) => {
@@ -34,9 +35,11 @@ export const handlerFunctions = {
       return
     }
 
+    const hashedPassword = bcryptjs.hashSync(password, bcryptjs.genSaltSync(10))
+
     const user = await User.create({
       username: username,
-      password: password
+      password: hashedPassword
     })
 
     req.session.userId = user.userId
@@ -72,7 +75,7 @@ export const handlerFunctions = {
 
     // if we're here, then the user was found
     // now evaluate if the passwords match
-    if (user.password !== password) {
+    if (!bcryptjs.compareSync(password, user.password)) {
       res.send({
         message: 'password does not match',
         success: false,
